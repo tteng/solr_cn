@@ -39,6 +39,7 @@ For now in your Gemfile, there's no need to add <code> gem 'sunspot_cell_jars' <
 In the model 
 
 {{{
+
     class Attachment < ActiveRecord::Base
 
       mount_uploader :upload, UploadUploader
@@ -65,6 +66,7 @@ In the model
       end
 
     end
+
 }}}
 
 For the detailed sunspot configuration please reference [here](http://goo.gl/H0S1B)
