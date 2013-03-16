@@ -38,10 +38,7 @@ For now in your Gemfile, there's no need to add <code> gem 'sunspot_cell_jars' <
 
 In the model 
 
-<pre>
-
-  <code>
-
+{{{
     class Attachment < ActiveRecord::Base
 
       mount_uploader :upload, UploadUploader
@@ -58,6 +55,7 @@ In the model
         # this *must* end in _attachment
         attachment :document_attachment
       end
+
       # Goes hand-in-hand with the item above. Now, this is important:
       # the return value from this method is NOT the binary data itself,
       # but rather the full URI to the file. Cell will use this to locate
@@ -65,12 +63,9 @@ In the model
       def document_attachment
         "#{Rails.root}/public/#{upload.url}"
       end
-      ... ...
+
     end
-
-  </code>
-
-</pre>
+}}}
 
 For the detailed sunspot configuration please reference [here](http://goo.gl/H0S1B)
 
