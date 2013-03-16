@@ -36,10 +36,14 @@ For now in your Gemfile, there's no need to add <code> gem 'sunspot_cell_jars' <
   </code>
 </pre>
 
-In the model, 
+In the model 
+
 <pre>
+
   <code>
+
     class Attachment < ActiveRecord::Base
+
       mount_uploader :upload, UploadUploader
 
       # Sunspot indexing configuration
@@ -63,7 +67,9 @@ In the model,
       end
       ... ...
     end
+
   </code>
+
 </pre>
 
 For the detailed sunspot configuration please reference [here](http://goo.gl/H0S1B)
