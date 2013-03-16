@@ -40,7 +40,6 @@ In the model,
 <pre>
   <code>
     class Attachment < ActiveRecord::Base
-
       mount_uploader :upload, UploadUploader
 
       # Sunspot indexing configuration
@@ -50,13 +49,11 @@ In the model,
         time :created_at
         time :updated_at
         text :file_name
-     
         # For Sunspot Cell. The 'attachment' directive instructs
         # Cell how to get the binary data. My understanding is that
         # this *must* end in _attachment
         attachment :document_attachment
       end
- 
       # Goes hand-in-hand with the item above. Now, this is important:
       # the return value from this method is NOT the binary data itself,
       # but rather the full URI to the file. Cell will use this to locate
@@ -64,9 +61,7 @@ In the model,
       def document_attachment
         "#{Rails.root}/public/#{upload.url}"
       end
-
       ... ...
- 
     end
   </code>
 </pre>
