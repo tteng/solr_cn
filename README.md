@@ -71,6 +71,14 @@ In the model
 
 For the detailed sunspot configuration please reference [here](http://goo.gl/H0S1B)
 
+Autostart
+----------------------------------------------------------------------------------
+copy solr_cn to /etc/init.d and run
+
+  sudo update-rc.d solr_cn defaults
+
+  and sudo /etc/init.d/solr_cn start,stop to run or halt solr service
+
 License
 --------------------------------------
 solr_cn is distributed under the MIT License

@@ -1,0 +1,34 @@
+#!/bin/bash
+# description: Starts and stops Solr production
+set -e
+PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+SOLR_DIR=/var/www/apps/solr_cn/
+JAVA_OPTIONS="-Dsolr.solr.home=./solr -server -DSTOP.PORT=8079 -DSTOP.KEY=stopkey -Xmx13312M -Xms1024M -jar start.jar"
+JAVA="/usr/bin/java"
+LOG_FILE="/var/log/solr/console.log"
+case $1 in
+  start)
+    echo "Starting Solr"
+    cd $SOLR_DIR
+    cd $SOLR_DIR && nohup $JAVA $JAVA_OPTIONS 2> $LOG_FILE &
+    echo "ok."
+  ;;
+
+  stop)
+    echo "Stopping Solr"
+    cd $SOLR_DIR
+    $JAVA $JAVA_OPTIONS --stop
+    echo "stopped."
+  ;;
+
+  restart)
+    $0 stop
+    sleep 3
+    $0 start
+  ;;
+
+  *)
+   echo "Usage: $0 {start|stop|restart}" >&2
+   exit 1
+  ;;
+esac
